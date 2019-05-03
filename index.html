@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>proyecto</title>
+ 
+ 
+<script type="text/javascript" src="jquery-3.0.0.js"></script>
+</head>
+<body>
+<script>
+//metodo para leer todos los reqistros
+function cargar(){
+libros="";
+$.getJSON( "ejemplo.py", function( json ) {
+ // console.log( "JSON Data: "+ json.data.listLibros.items.length );
+ 
+ for (i = 0; i < json.data.listLibros.items.length; i++) {
+  libros= libros + " ID: "+ json.data.listLibros.items[i].id  + " Titulo: "+ json.data.listLibros.items[i].titulo + " Subtitulo: " + json.data.listLibros.items[i].subtitulo + "  Autor: " + json.data.listLibros.items[i].autor + " Categoria: "+ json.data.listLibros.items[i].categoria + " Fecha de publicacion: "+ json.data.listLibros.items[i].fecha_publicacion + " Descripcion: " +json.data.listLibros.items[i].descripcion + " Imagen: <br>";
+}
+document.getElementById("datos").innerHTML = libros;
+
+ // clientes=json.data.listLibros.items.length;
+//document.getElementById("datos").innerHTML = clientes;
+  
+ });
+}
+
+
+</script>
+
+   <button type="button" onclick="cargar()">Mostrar</button>
+ <div id="datos"> </div>
+ </body>
+ 
+ </html>
